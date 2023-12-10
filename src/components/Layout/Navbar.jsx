@@ -3,16 +3,17 @@ import PropTypes from 'prop-types'
 import { auth } from '../../Config/firebase'
 import { useEffect, useState } from 'react';
 export default function Navbar({ title }) {
-const [userImg,setUserImg] = useState();
+const [userImg,setUserImg] = useState(null);
 
 
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUserImg(user ? user.photoURL : null);
+    const unsubscribe  = auth.onAuthStateChanged((user) => {
+     setUserImg(user ?user.photoURL : null);
     });
     return () => unsubscribe();
   }, []);
+
   return (
     <nav className="navbar mb-12 shadow-lg bg-neutral text-neutral-content">
       <div className="container mx-auto">
@@ -31,21 +32,18 @@ const [userImg,setUserImg] = useState();
           <Link to="/contact-us" className="btn btn-ghost btn-sm rounded-btn">
             Contact Us
           </Link>
-        
+       
         <Link to="/Auth" className="btn btn-ghost btn-sm rounded-btn">
-          {auth.currentUser?.photoURL ? (
-          
-              <img
-                src={userImg}
-                alt="Profile"
-                className="h-8 w-8 rounded-full ml-2"
-              />
-            
-          ) : (
-           <> Log In</>
-          )}
-        </Link>
-
+  {userImg ? (
+    <img
+      src={userImg}
+      alt="Profile"
+      className="h-8 w-8 rounded-full ml-2"
+    />
+  ) : (
+    <> Log In</>
+  )}
+</Link>
 
         </div>
       </div>

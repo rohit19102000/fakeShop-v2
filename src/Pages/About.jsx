@@ -12,8 +12,6 @@ export default function About() {
     <p className='text-lg text-gray-400'>
       created By : <span className='text-white'>Rohit Kedar</span> 
     </p>
-    <br />
-    <p> roll no: <span className='text-white' > 4031687</span></p>
     
   </>
   )

@@ -11,7 +11,7 @@ const BuyNow = () => {
 
       <h1 className="mb-8 text-3xl font-bold">{details.title}</h1>
       <p className="mb-8">{details.description}</p>
-      <h1 className="mb-8 font-bold">{details.price} ₹</h1>
+      <h1 className="mb-8 font-bold">{details.price * details.quantity} ₹</h1>
       <ContactForm />
     </div>
   );

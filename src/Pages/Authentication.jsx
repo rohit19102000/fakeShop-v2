@@ -20,7 +20,6 @@ function Authentication() {
     } catch (error) {
       console.error('Error signing in:', error.message);
     }
- 
   }
 
 
@@ -52,7 +51,7 @@ const logOut = async (e) => {
         Hello {auth.currentUser.displayName || auth.currentUser.email}
       </div>
     ) : (
-      <h1 className="text-2xl mb-4">  log in to continue</h1>
+      <h1 className="text-2xl mb-4"> log in to continue</h1>
     )}
 
     <div className="bg-black bg-opacity-25 p-0 rounded shadow-lg w-96">

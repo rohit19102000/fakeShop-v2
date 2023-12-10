@@ -21,7 +21,7 @@ const ContactForm = () => {
           email,
           productTitle: details.title,
           productId: details.id,
-          productPrice: `${Math.floor(details.price)} ₹` ,
+          productPrice: `${Math.floor(details.price * details.quantity)} ₹` ,
           to_name:'Rohit'
 
         },

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router ,Route , Routes,  }  from 'react-router-dom';
-import { useState ,createContext }  from 'react';
+import { useState }  from 'react';
 import NavBar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
 import Home from './Pages/Home';
@@ -22,6 +22,7 @@ const getDetails = (product) => {
    <Router>
      <div className="flex flex-col justify-between h-screen">
      <NavBar />
+    
      <main className="container mx-auto px-3 pb-12">
        <Routes>
          <Route path="/" element={<Home getDetails={getDetails} />} />
