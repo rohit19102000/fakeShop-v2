@@ -1,29 +1,34 @@
-import React, { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
-import { useContext } from 'react';
 import { DetailsContext } from '../Products/DetailsContext';
+import { auth } from '../../Config/firebase';
 
 const ContactForm = () => {
   const { details } = useContext(DetailsContext);
-  const [from_name, setFrom_Name] = useState('');
+  const [fromName, setFromName] = useState(''); 
   const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    if (auth.currentUser) {
+      setFromName(auth.currentUser.displayName || '');
+      setEmail(auth.currentUser.email || '');
+    }
+  }, [auth.currentUser]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
 
     emailjs
       .send(
         'service_xu7iwli',
         'template_d370rl8',
         {
-          from_name,
+          from_name: fromName,
           email,
           productTitle: details.title,
           productId: details.id,
-          productPrice: `${Math.floor(details.price * details.quantity)} ₹` ,
-          to_name:'Rohit'
-
+          productPrice: `${Math.floor(details.price * details.quantity)} ₹`,
+          to_name: 'Rohit'
         },
         'JajF2pawbLwPmW_E7'
       )
@@ -36,7 +41,7 @@ const ContactForm = () => {
         }
       );
 
-    setFrom_Name('');
+    setFromName(''); 
     setEmail('');
   };
 
@@ -49,10 +54,10 @@ const ContactForm = () => {
         <input
           type="text"
           id="name"
-          name='from_name'
+          name="from_name"
           className="block w-full p-2 border rounded"
-          value={from_name}
-          onChange={(e) => setFrom_Name(e.target.value)}
+          value={fromName} 
+          onChange={(e) => setFromName(e.target.value)}
         />
       </div>
       <div className="mb-4">
@@ -74,7 +79,7 @@ const ContactForm = () => {
         type="submit"
         className="block w-full p-2 text-white bg-indigo-500 rounded"
       >
-        Buy 
+        Buy
       </button>
     </form>
   );
