@@ -24,9 +24,9 @@ export default function Details() {
 
 
       <div className="card lg:card-side bg-base-100 shadow-xl">
-        <figure>
-          <img src={`${details.image}`} style={{width:"600px",height:"600px"}} alt="Album" />
-        </figure>
+        <div >
+          <img src={`${details.image}`} style={{width:"60vw",height:"60vh"}} alt="Album" />
+        </div>
         <div className="card-body">
           <h1 className="card-title text-white-500 text-3xl">
             {" "}
